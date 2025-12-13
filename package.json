@@ -1,0 +1,19 @@
+{
+  "name": "react-fundamentos-otaku",
+  "version": "1.0.0",
+  "description": "- Bootcamp de Desarrollo Web 19. KeepCoding ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "workspaces" :[
+    "projects/*"
+  ],
+    "prettier": {
+    "singleQuote": true
+  }
+}

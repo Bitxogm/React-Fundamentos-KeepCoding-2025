@@ -1,0 +1,11 @@
+
+header {
+  .subtitle {
+    color: #fff;
+    font-size: 1.5rem;
+    color: #65c891;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+};
