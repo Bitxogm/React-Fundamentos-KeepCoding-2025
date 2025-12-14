@@ -3,10 +3,10 @@ import type { MouseEventHandler } from "react";
 import './button.css';
 
 type Props = {
-  children: string;
-  className?: string;
+  readonly children: string;
+  readonly className?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
-  [key: string]: unknown;
+  readonly[key: string]: unknown;
 }
 
 export const Button: React.FC<Props> = ({ children, className, onClick, ...restOfProps }) => {

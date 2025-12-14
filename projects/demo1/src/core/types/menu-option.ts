@@ -1,5 +1,5 @@
  
  export type MenuOption = {
-  path: string;
-  label: string;
+  readonly path: string;
+  readonly label: string;
 }

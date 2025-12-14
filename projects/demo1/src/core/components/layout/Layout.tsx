@@ -9,10 +9,10 @@ import { Footer } from '../footer/footer';
 import type { MenuOption } from '@core/types/menu-option';
 
 type Props = {
-  children: ReactNode;
-  appTitle: string;
-  subTitle: string;
-  menuOptions: MenuOption[];
+  readonly children: ReactNode;
+  readonly appTitle: string;
+  readonly subTitle: string;
+  readonly menuOptions: MenuOption[];
 }
 
 export const Layout: React.FC<Props> = ({
