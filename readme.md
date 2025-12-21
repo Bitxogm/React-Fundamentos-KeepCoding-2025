@@ -99,3 +99,146 @@ Aprender qué es y cómo funciona React, una librería creada por Facebook para 
   - Funciones asíncronas en manejadores de eventos
 - Autenticación
 - Contexto global: Context API
+
+## Desarrollo del módulo
+
+### Día 1 (Martes 09/12)
+
+- Introducción ¿Qué es React?
+  - Librería de JavaScript
+  - Principios básicos
+  - Elementos del DOM. React en un Script
+  - Componentes funcionales y JSX
+- Entorno de desarrollo con Vite
+  - Construcción de un proyecto real. Vite
+  - Requisitos previos
+  - Instalación de React y TypeScript con Vite
+
+[Descanso] - 21:00 a 21:20h
+
+- Estructura del proyecto creado con Vite
+  - Client Side Rendering
+  - Single Page Application (SPA)
+  - Estructura de carpetas y ficheros
+    - index.html -> main.tsx -> App
+  - Comandos (scripts) disponibles con Vite
+- Componentes
+  - Componentes y funciones
+  - Construcción de componentes: Componentización
+    - Header y Footer a partir de la App Inicial
+
+### Día 2 (Miércoles 10/12)
+
+- Construcción de componentes: Componentización
+  - Componentes y props. Children
+  - Componentización y composición de componentes
+    - Card
+    - Menu
+    - Logos
+    - Cambios en Header y App
+  - Estilos en los componentes
+    - Module CSS
+
+[Descanso] - 21:00 a 21:20h
+
+- Componentes dinámicos. Eventos
+  - Condiciones en los componentes. Greeting
+  - Iteraciones: renderizado de listas. Menu
+  - Manejo de eventos. Tipado de eventos
+    - PanicButton
+    - Componente Button genérico
+
+### Día 3 (Jueves 11/12)
+
+- Hooks
+  - Reglas de los Hooks
+  - Hooks y estado: useState
+
+[Descanso] - 21:00 a 21:20h
+
+- Efectos secundarios: useEffect
+- Referencias persistentes: useRef
+  - persistencia de variables
+  - elementos del DOM
+  - (mencionados useMemo, useCallback)
+- Formularios
+  - Tipos de formularios en React
+  - Formularios controlados de 1 campo
+
+### Día 4 (Viernes 12/12)
+
+- Formularios (continuación)
+  - Formularios controlados con un campo
+  - Formularios controlados con múltiples campos
+  - Validación de formularios con HTMLs
+  - Formularios no controlados. FormData
+
+[Descanso] - 21:00 a 21:20h
+
+- Rutas nativas en React
+  - Componente Router: Presentación de las Vistas (páginas)
+  - Componente Link: Navegación entre páginas
+  - Uso del componente Link
+  - Escuchar cambios en la URL
+  - Diferencias con librerías de routing
+- Custom Hooks: Hook useRouter
+- La librería React Router
+  - Instalación
+  - React Router modo data (Programático)
+
+### Día 5 (Lunes 15/12)
+
+- Repaso Router
+  - Router con React nativo -> comentar error del Hook
+  - ReactRouter
+    1. Array de rutas: modificaciones
+    2. Definir Outlet en App
+    3. main: Crear router y añadir al provider
+    4. usar Link de react-router
+- La librería React Router (continuación)
+
+  - Redirecciones en las rutas
+  - Lazy Loading
+
+- Patrón contenedor/presentador. Rutas dinámicas
+  - Página de Productos y su ruta en el array de rutas
+  - Entidad, servicio y datos
+    - getAllAsync / getByIdAsync
+  - CRUD de productos:
+    - ProductsList
+    - ProductCard
+
+[Descanso] - 21:00 a 21:20h
+
+- CRUD de productos:
+
+  - ProductForm: Edit
+  - ProductForm: Add
+
+- Rutas dinámicas
+  - Página de detalle
+
+### Día 6 (Martes 16/12)
+
+- Patrones de abstracción de datos
+  - Custom Hooks: lógica del estado
+  - Capa repositorio -> APIS
+  
+- APIs
+  - Backend real can sparest
+  - Carga de datos: del mock asinncrono a la api real
+    - Creación de métodos en el repo
+    - Uso en los hook
+  
+  [Descanso] - 21:00 a 21:20h
+
+  - Métodos CUD en el repo
+  - Incorporación en el hook: estrategia optimista
+  - Pruebas de los componentes
+
+- Autenticación
+  - Configuración y funcionamiento en sparest
+  - Protección de rutas
+  - Cabeceras de Autenticación
+  - Lógica en useAuth
+  - Repaso de los componentes Register, Login, Logout. User
