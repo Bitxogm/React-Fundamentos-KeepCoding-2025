@@ -4,16 +4,22 @@
   "description": "- Bootcamp de Desarrollo Web 19. KeepCoding ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "cd server && npm run dev",
+    "client": "cd projects/demo2 && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\" --names \"SERVER,CLIENT\" --prefix-colors \"blue,green\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
-  "workspaces" :[
+  "workspaces": [
     "projects/*"
   ],
-    "prettier": {
+  "prettier": {
     "singleQuote": true
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

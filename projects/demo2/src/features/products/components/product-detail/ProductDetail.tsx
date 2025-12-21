@@ -1,7 +1,7 @@
-import { getDataByIdAsync } from "@features/products/services/products-mock";
 import type { Product } from "@features/products/types/product"
-import { useEffect, useState } from "react";
+import { PRODUCT_LABELS } from "@features/products/types/product";
 import { useNavigate } from "react-router";
+import { useDetail } from "./useDetail";
 
 type Props = {
   id: Product['id'];
@@ -9,38 +9,14 @@ type Props = {
 
 export const ProductDetail: React.FC<Props> = ({ id }) => {
 
-  const [product, setProduct] = useState<Product | null>(null);
+
+  const {product,} = useDetail({ id });
 
   const navigate = useNavigate();
 
   const handleGoBack = (): void => {
     navigate('/products');
   }
-
-  useEffect(() => {
-    const load = async ():Promise<void>  => {
-      const item: Product | undefined = await getDataByIdAsync(id);
-      if(item){
-        setProduct(item);
-      }
-    }
-    load()
-  }, [id]);
-
-  const labelMap: Record<string, string> = {
-    id: 'ID',
-    name: 'Name',
-    model: 'Model',
-    vehicleClass: 'Vehicle Class',
-    manufacturer: 'Manufacturer',
-    length: 'Length (m)',
-    costs: 'Costs (credits)',
-    crew: 'Crew',
-    passengers: 'Passengers',
-    maxSpeed: 'Max Speed (km/h)',
-    cargoCapacity: 'Cargo Capacity (kg)',
-    consumables: 'Consumables'
-  };
 
   return (
     <div>
@@ -49,7 +25,7 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
         <ul>
           {Object.entries(product).map(([key, value]) => (
             <li key={key}>
-              <strong>{labelMap[key] || key}:</strong> {value}
+              <strong>{PRODUCT_LABELS[key as keyof Product] || key}:</strong> {value}
             </li>
           ))}
         <button onClick={handleGoBack} >Go back</button>
@@ -60,3 +36,5 @@ export const ProductDetail: React.FC<Props> = ({ id }) => {
     </div>
   )
 }
+
+

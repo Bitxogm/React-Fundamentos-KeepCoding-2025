@@ -1,6 +1,7 @@
 import { Card } from "@core/components/card/Card";
 import type { Product } from "@features/products/types/product"
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 type Props = {
   item: Product | null;
@@ -38,6 +39,12 @@ export const ProductForm: React.FC<Props> = ({ item, onClose }) => {
     });
   }
 
+    const navigate = useNavigate();
+
+  const handleGoBack = (): void => {
+    navigate('/products');
+  }
+
 
   return (
     <Card title="Product Edit Form">
@@ -66,6 +73,7 @@ export const ProductForm: React.FC<Props> = ({ item, onClose }) => {
         <div className="buttons-group">
           <button type="submit">{isEditing ? "Save" : "Add"}</button>
           <button type="reset">Reset</button>
+           <button onClick={handleGoBack} >Go back</button>
         </div>
       </form>
 

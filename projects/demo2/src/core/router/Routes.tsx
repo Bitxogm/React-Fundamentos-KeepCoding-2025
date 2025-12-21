@@ -16,6 +16,13 @@ const HomePage = React.lazy(() => import('@features/home/HomePage'));
 const DashboardPage = React.lazy(() => import('@features/dashboard/DashboardPage'));
 const ProductsPage = React.lazy(() => import('@features/products/ProductsPage'));
 
+const protectedRoute = (): void => {
+    const token = localStorage.getItem('sparest-token')
+    if (!token) {
+        throw redirect("/");
+    }
+}
+
 export const routes: RouteObject[] = [
   {
     path: "/",
@@ -35,11 +42,13 @@ export const routes: RouteObject[] = [
         id: "Home",
       },
       {
+        loader: protectedRoute,
         path: "/products",
         Component: ProductsPage,
         id: "Products"
       },
       {
+        loader: protectedRoute,
         path: "/products/:id",
         Component: ProductsPage,
       },

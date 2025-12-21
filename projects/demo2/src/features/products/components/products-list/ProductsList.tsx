@@ -1,41 +1,24 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ProductForm } from "../product-form/ProductForm"
 import { ProductItem } from "../product-item/ProductItem"
 import type { Product } from "@features/products/types/product"
-import { getDataAsync } from "@features/products/services/products-mock"
 
 import "./products-lists.css";
+import { useProducts } from "./useProducts";
+import { Card } from "@core/components/card/Card";
 
 export const ProductsList: React.FC = () => {
-  const initialProducts: Product[] = [];
 
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const { products, addProduct, updateProduct, deleteProduct, error } = useProducts();
+
   const [showForm, setShowForm] = useState(false);
   const [activeProduct, setActiveProduct] = useState<Product | null>(null);
-
-  const handleUpdateProduct = (product: Product): void => {
-    setProducts(products.map(item => item.id === product.id ? product : item))
-  };
 
   const handleAddForm = (): void => {
     if (activeProduct)
       setActiveProduct(null);
     setShowForm(true);
   }
-
-  const handleAddProduct = (product: Product): void => {
-    const newId = crypto.randomUUID().slice(0, 4);  
-    product.id = newId;
-    console.log("Add", product);
-    setProducts([ product,...products]);
-  }
-
-  const handleDeleteProduct = (product: Product): void => {
-    console.log("Delete", product.id);
-    setProducts(
-      products.filter((item) => item.id !== product.id)
-    )
-  };
 
   const handleEditForm = (product: Product): void => {
     setShowForm(true);
@@ -49,17 +32,19 @@ export const ProductsList: React.FC = () => {
 
     if (product) {
       if (isEditing) {
-        handleUpdateProduct(product);
+        updateProduct(product);
       } else {
-        handleAddProduct(product);
+        addProduct(product);
       }
     }
   };
-
-  useEffect(() => {
-
-    getDataAsync().then(data => setProducts(data));
-  }, []);
+  if (error) {
+    return <div className="products-wrapper">
+      <Card>
+        Error: {error.message}
+        </Card>
+    </div>
+  }
 
   return (
     <div className="products-wrapper">
@@ -75,7 +60,7 @@ export const ProductsList: React.FC = () => {
                   <ProductItem
                     product={item}
                     onEdit={handleEditForm}
-                    onDelete={handleDeleteProduct}
+                    onDelete={deleteProduct}
                   />
                 </li>
               ))}
@@ -86,3 +71,4 @@ export const ProductsList: React.FC = () => {
     </div>
   )
 }
+

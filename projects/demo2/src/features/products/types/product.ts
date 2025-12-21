@@ -1,15 +1,17 @@
 
 export type Product = {
-  id: string;
+  id: number;
   name: string;
-  model:string;
-  vehicleClass: string;
-  manufacturer: string;
-  length: number;
-  costs: number;
-  crew: number;
-  passengers: number;
-  maxSpeed: number;
-  cargoCapacity: number;
-  consumables: string;
+  price: number;
+  userId: number;
+  updatedAt?: string;
 }
+
+export const PRODUCT_LABELS: Record<keyof Omit<Product, 'updatedAt'>, string> = {
+  id: 'ID',
+  name: 'Name',
+  price: 'Price',
+  userId: 'User ID'
+};
+
+export type ProductDTO = Omit<Product, 'id'>
